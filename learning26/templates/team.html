@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: bisque;">
+    <div style="background-color: whitesmoke; width:fit-content; height: fit-content;">
+        <h1>Team name: {{teamname}}</h1>
+        <h1>Trophy: {{trophy}}</h1>
+        <h1>captain: {{captain}}</h1>
+    </div>
+    <div style="background-color: whitesmoke; width:fit-content; height: fit-content;">
+        <h1>Playerlist:</h1>
+         {% for i in playerlists %}
+          <h1>{{i}}</h1>
+         {% endfor %}
+    </div>
+    <div style="background-color: whitesmoke; height: fit-content; width: fit-content;">
+        {% if trophy >= 5 %}
+           <h1>Good Winnings</h1>
+        {% else %}
+           <h1>Bad Winnings</h1>
+        {% endif %}
+    </div>
+
+    
+</body>
+</html>
