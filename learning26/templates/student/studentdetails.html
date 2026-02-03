@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <ul>
+        {% for name, details in details.items %}
+            <li>
+                <h4>{{ name }}</h4> Age {{ details.age }}, Grade {{ details.grade }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -77,7 +77,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'learning26',
-        'USER': 'rajesh.pandya',  # Change to 'postgres' if Step 1 said so
+        'USER': 'rajesh.pandya',  
         'PASSWORD': '',           # Usually blank for Postgres.app
         'HOST': 'localhost',
         'PORT': '5432',
