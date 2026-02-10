@@ -34,6 +34,7 @@ urlpatterns = [
     path("moviessuggest/",views.moviessuggest),
 
     path("student/", include('student.urls')),
+    path("employee/", include('employee.urls')),
    
  
 

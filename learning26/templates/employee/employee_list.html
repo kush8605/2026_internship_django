@@ -1,0 +1,27 @@
+<h1>employee List</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Join Date</th>
+            <th>Post</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for emp in employees  %}
+        <tr>
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.age}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.join_date}}</td>
+            <td>{{emp.post}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
