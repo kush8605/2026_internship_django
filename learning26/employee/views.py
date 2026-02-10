@@ -10,42 +10,45 @@ def employeelist(request):
 
 
 def employeeFilter(request):
-    #where select  from employee where name = "raj"
-    employee = Employee.objects.filter(name ="raj").values()
-    #selet  from employee where post = "Developer"
+    #where select  from employee where name = "kush"
+    employee1 = Employee.objects.filter(name ="kush").values()
+    # #selet  from employee where post = "Developer"
     employee2 = Employee.objects.filter(post ="Developer").values()
-    #select  from employee where name = "raj" and post = "Developer"
-    employee3 = Employee.objects.filter(name ="raja",post ="Developer").values()
-    #select  from employee where name = "raj" or post = "Developer"
+    # #select  from employee where name = "kush" and post = "Developer"
+    employee3 = Employee.objects.filter(name ="kush",post ="Developer").values()
+   
+    # #select  from employee where age > 25
+    # employee4 = Employee.objects.filter(age>25).values()
+    employee4 = Employee.objects.filter(age__gt=25).values()
+    employee5 = Employee.objects.filter(age__gte=25).values()
 
-    #>23
-    #seelct  from employee where age > 23
-    #employee4 = Employee.objects.filter(age>23).values()
-    employee4 = Employee.objects.filter(age__gt=23).values()
-    employee5 = Employee.objects.filter(age__gte=23).values()
+    # #lt , lte
+    employee19 = Employee.objects.filter(age__lt=30).values()
+    employee20 = Employee.objects.filter(age__lte=30).values()
 
-    #lt , lte
 
-    #string queries
+    # #string queries
+    # exact for post or any thing like name
     employee6 = Employee.objects.filter(post__exact="Developer").values()
     employee7 = Employee.objects.filter(post__iexact="developer").values()
-    #contains
-    employee8 = Employee.objects.filter(name__contains="r").values()
-    employee9 = Employee.objects.filter(name__icontains="R").values()
 
-    #startswith endswith
-    employee10 = Employee.objects.filter(name__startswith="R").values()
-    employee11 = Employee.objects.filter(name__endswith="R").values()
-    employee12 = Employee.objects.filter(name__istartswith="R").values()
-    employee13 = Employee.objects.filter(name__iendswith="R").values()
+    # #contains
+    employee8 = Employee.objects.filter(name__contains="N").values()
+    employee9 = Employee.objects.filter(name__icontains="n").values()
 
-    #in
-    employee14 = Employee.objects.filter(name__in=["raj","jay"]).values()    
+    # #startswith endswith
+    employee10 = Employee.objects.filter(name__startswith="D").values()
+    employee11 = Employee.objects.filter(name__iendswith="H").values()
+    employee12 = Employee.objects.filter(name__istartswith="d").values()
+    employee13 = Employee.objects.filter(name__iendswith="H").values()
 
-    #range
-    employee15 = Employee.objects.filter(age__range=[24,30]).values()    
+    # #in
+    employee14 = Employee.objects.filter(name__in=["kush","Nigam"]).values()    
 
-    #order by
+    # #range
+    employee15 = Employee.objects.filter(age__range=[28,30]).values()    
+
+    # #order by
     employee16 = Employee.objects.order_by("age").values()     #asc
     employee17 = Employee.objects.order_by("-age").values()    #desc
 
@@ -54,7 +57,7 @@ def employeeFilter(request):
     
 
     #and
-    print("query 1",employee)
+    print("query 1",employee1)
     print("query 2",employee2)
     print("query 3",employee3)
     print("query 4",employee4)
@@ -71,4 +74,7 @@ def employeeFilter(request):
     print("query 15",employee15) 
     print("query 16",employee16) 
     print("query 17",employee17) 
+    print("query 18",employee18)
+    print("query 19",employee19) 
+    print("query 20",employee20)
     return render(request, 'employee/employeeFilter.html')
