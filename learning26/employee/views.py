@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, HttpResponse
 from . models import Employee
+from . forms import EmployeeForm,CourseForm,InstagramForm,SearchForm
+
+
 
 # Create your views here.
 def employeelist(request):
@@ -78,3 +82,53 @@ def employeeFilter(request):
     print("query 19",employee19) 
     print("query 20",employee20)
     return render(request, 'employee/employeeFilter.html')
+
+
+
+def createemployee(request):
+     Employee.objects.create(name="ajay",age=23,salary=23000,post="HR",join_date="2022-01-01")
+     return HttpResponse("EMPLOYEE CREATED...")
+
+
+
+
+def createEmployeeWithForm(request):
+    print(request.method)
+    if request.method == "POST":
+        form = EmployeeForm(request.POST)
+        form.save() #it same as create
+        return HttpResponse("EMPLOYEE CREATED...")
+    else:
+        #form object create --> html
+        form = EmployeeForm() #form object        
+        return render(request,"employee/createEmployeeForm.html",{"form":form})
+    
+
+def createCourse(request):
+    if request.method == "POST":
+        form = CourseForm(request.POST)
+        form.save() #it same as create
+        return HttpResponse("Course CREATED...")     
+    else:
+        form = CourseForm() #form object        
+        return render(request,"employee/createCourse.html",{"form":form})
+
+
+def createInstagram(request):
+    if request.method == "POST":
+        form = InstagramForm(request.POST)
+        form.save() #it same as create
+        return HttpResponse("Instagram CREATED...")    
+    else:
+        form = InstagramForm() #form object        
+        return render(request,"employee/createInstagram.html",{"form":form})  
+
+
+def createSearch(request):
+    if request.method == "POST":
+        form = SearchForm(request.POST)
+        form.save() #it same as create
+        return HttpResponse("Search CREATED...")    
+    else:
+        form = SearchForm() #form object        
+        return render(request,"employee/createSearch.html",{"form":form})     
