@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,redirect
 from . models import Employee
 from . forms import EmployeeForm,CourseForm,InstagramForm,SearchForm
 
@@ -97,7 +97,8 @@ def createEmployeeWithForm(request):
     if request.method == "POST":
         form = EmployeeForm(request.POST)
         form.save() #it same as create
-        return HttpResponse("EMPLOYEE CREATED...")
+        # return HttpResponse("EMPLOYEE CREATED...")
+        return redirect("employeeList")
     else:
         #form object create --> html
         form = EmployeeForm() #form object        
@@ -132,3 +133,27 @@ def createSearch(request):
     else:
         form = SearchForm() #form object        
         return render(request,"employee/createSearch.html",{"form":form})     
+    
+
+
+def deleteEmployee(request,id):
+    #delete from employees where id = 1
+    print("id from url = ",id)
+    Employee.objects.filter(id=id).delete()
+    # return HttpResponse("EMPLOYEE DELETED...")  
+    return redirect("employeeList") #url --> name -->
+
+def filterEmployee(request):
+    print("filter employee called...")
+    employees = Employee.objects.filter(age__gte=25).values()
+    print("filter employees = ",employees)
+    #return redirect("employeeList")
+    return render(request,"employee/employee_list.html",{"employees":employees})
+
+def sortemployees(request,id):
+    if id == 1:
+       employees = Employee.objects.all().order_by("age").values
+    elif id == 2:
+       employees = Employee.objects.all().order_by("-age").values
+
+    return render(request, "employee/employee_list.html",{"employees":employees})
