@@ -24,4 +24,7 @@ class InstagramForm(forms.ModelForm):
 class SearchForm(forms.ModelForm):
     class Meta:
         model = search
-        fields = ['name','age']      
+        fields = ['name','age']    
+
+
+              

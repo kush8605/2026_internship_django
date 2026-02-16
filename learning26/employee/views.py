@@ -7,7 +7,7 @@ from . forms import EmployeeForm,CourseForm,InstagramForm,SearchForm
 
 # Create your views here.
 def employeelist(request):
-    employees = Employee.objects.all().values()
+    employees = Employee.objects.all().order_by("id").values()
     print(employees)
     return render(request, 'employee/employee_list.html', {'employees': employees})
 
@@ -157,3 +157,14 @@ def sortemployees(request,id):
        employees = Employee.objects.all().order_by("-age").values
 
     return render(request, "employee/employee_list.html",{"employees":employees})
+
+
+def updateEmployee(request,id):
+    employee = Employee.objects.get(id=id)
+    if request.method == "POST":
+        form = EmployeeForm(request.POST,instance=employee)
+        form.save()
+        return redirect ("employeeList")
+    else:
+         form = EmployeeForm(instance=employee) 
+         return  render(request,"employee/updateEmployee.html",{"form":form})

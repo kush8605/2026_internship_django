@@ -1,0 +1,28 @@
+<h1> service list </h1> 
+<a href="{% url 'serviceform' %}">Create service</a>
+<a href="{% url 'sortservice' 1 %}">ascending</a>
+<a href="{% url 'sortservice' 2 %}">descending</a>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>DELETE</th>
+      <th>UPDATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for service in services %}
+    <tr>
+      <td>{{service.id}}</td>
+      <td>{{service.name}}</td>
+      <td>{{service.description}}</td>
+      <td>{{service.price}}</td>
+      <td><a href="{% url 'deleteservice' service.id %}">DELETE</a></td>
+      <td><a href="{% url 'updateservice' service.id %}">UPDATE</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

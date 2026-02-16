@@ -1,7 +1,7 @@
-<h1>Course Form</h1>    
-
+<h1> serviceform </h1>
+<a href="{% url 'servicelist' %}">service List</a>
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Submit">
-</form>
+</form> 

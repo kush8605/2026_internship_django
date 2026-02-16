@@ -40,4 +40,8 @@ def moviessuggest(request):
     crime = ["Se7en","The Godfather","Pulp Fiction","Gone Girl","Zodiac"]
     data2 = {"Thriller": thriller, "Comedy": comedy, "Crime": crime}
     return render(request,"moviessuggest.html", data2)
-    
+
+
+
+
+        
