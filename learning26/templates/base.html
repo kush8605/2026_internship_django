@@ -1,0 +1,15 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        {% include "usernavbar.html" %}
+        
+    <div class ="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    {% include "footer.html" %}
+    </body>
+</html>

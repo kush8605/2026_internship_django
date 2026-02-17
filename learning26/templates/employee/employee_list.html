@@ -1,39 +1,36 @@
-<h1>employee List</h1>
-
-<a href="{% url 'employeeForm' %}">CREATE EMPLOYEE<a/>
-<a href ="{% url 'filterEmployee' %}">FILTER</a>   
-<a href ="{% url 'sortEmployee' 1 %}">ascending</a> 
-<a href ="{% url 'sortEmployee' 2 %}">decending</a> 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Salary</th>
-            <th>Join Date</th>
-            <th>Post</th>
-            <th>DELETE</th>
-            <th>UPDATE</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for emp in employees  %}
-        <tr>
-            <td>{{emp.id}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.age}}</td>
-            <td>{{emp.salary}}</td>
-            <td>{{emp.join_date}}</td>
-            <td>{{emp.post}}</td>
-            <td>   {% comment %} <a href="{% url 'deleteEmployee' %}">DELETE</a> {% endcomment %}
-                 <a href = "{% url 'deleteEmployee' emp.id %}">DELETE</a>
-            </td>
-            <td>
-                <a href = "{% url 'updateEmployee' emp.id %}">UPDATE</a>
-        </tr>
-        {% endfor %}
-
-        
-    </tbody>
-</table>
+{% extends "base.html" %}
+{% block content %}
+<div class="glass-container">
+    <h1 class="page-title">Employee List</h1>
+    
+    <table class="style-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Join Date</th>
+                <th>Post</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in employees %}
+            <tr class="table-row">
+                <td>{{ emp.id }}</td>
+                <td class="emp-name">{{ emp.name }}</td>
+                <td>{{ emp.age }}</td>
+                <td style="color: var(--django-light); font-weight: bold;">₹{{ emp.salary }}</td>
+                <td>{{ emp.join_date }}</td>
+                <td><span class="post-badge">{{ emp.post }}</span></td>
+                <td class="action-cell">
+                    <a href="{% url 'updateEmployee' emp.id %}" class="btn btn-update">UPDATE</a>
+                    <a href="{% url 'deleteEmployee' emp.id %}" class="btn btn-delete">DELETE</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

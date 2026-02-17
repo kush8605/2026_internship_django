@@ -1,7 +1,14 @@
-<h1>Create Employee Form</h1>
-<a href="{% url 'employeeList'%}">Employee List<a/>
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+{% block content %}
+<div class="glass-container form-container">
+    <h1 class="page-title">Add New Employee</h1>
+    
+    <form method="POST" class="styled-form">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+        </div>
+        <input type="submit" value="Add Employee" class="btn btn-submit">
+    </form>
+</div>
+{% endblock content %}

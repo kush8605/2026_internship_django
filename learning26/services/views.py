@@ -34,6 +34,7 @@ def updateservice(request,id):
     else:  
         form = ServiceForm(instance=service) #form object
         return render(request,"services/serviceForm.html",{"form":form})
+    
 def sortservice(request, id):
   if id == 1:
     services = Service.objects.all().order_by('price')

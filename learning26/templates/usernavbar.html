@@ -1,0 +1,17 @@
+ <nav class="navbar">
+
+      <div class="logo">
+        <a href="{% url 'employeeList'%}"class="django-logo">   
+          <i class ="devicon-django-plain"></i>
+        <span>django</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="{% url 'employeeForm' %}">Create Employees</a>
+        <a href="{% url 'employeeList' %}">Employee List</a>
+        <a href="{% url 'filterEmployee' %}">Filter</a>
+        <a href="{% url 'sortEmployee' 1 %}">Ascending</a>
+        <a href="{% url 'sortEmployee' 2 %}">Descending</a>
+
+      </div>
+    </nav>

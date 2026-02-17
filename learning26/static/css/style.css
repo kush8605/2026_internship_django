@@ -1,0 +1,395 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+:root {
+    --django-dark: #092e20; /* Django official Dark Green */
+    --django-light: #44b78b; /* Django official Light Green */
+    --white: #ffffff; 
+    --black-shade: #050505; /* Deep black for contrast */
+    --white-shade: #a8b8b2; /* Light gray for subtle backgrounds */
+}                            
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3%;
+    height:80px;
+    background-color:var(--django-dark); 
+    backdrop-filter: blur(10px); /* Glass effect */
+    border-bottom: 2px solid rgba(0, 210, 255, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.5s ease;
+}
+.django-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: lowercase;
+    transition: 0.3s;
+}
+.django-logo span {
+    background-color:var(--django-dark); /* Django official Green */
+    color: #ffffff;
+    padding: 0 8px;
+    border-radius: 4px;
+    margin-left: 5px;
+    box-shadow: 0 0 10px rgba(9, 46, 32, 0.5);
+}
+.django-logo:hover span {
+
+    color: var(--django-light); /* Flips to Green Light */
+    box-shadow: 0 0 20px var(--django-hover-light); /* The "Light" effect */
+}
+
+.django-logo:hover {
+    transform: scale(1.1) rotate(-2deg);
+    filter: drop-shadow(0 0 8px #092e20);
+
+
+}
+/* --- Nav Links & Zoom Animation --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    /* margin-right: -20px; */
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color:var(--white);
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+    padding: 8px 12px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth springy zoom */
+}
+
+/* The Proper Zoom & Color Shift */
+.nav-links a:hover {
+    color:var(--django-light);
+    transform: scale(1.2); /* Proper Zoom */
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+}
+
+/* Animated Underline */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--django-light);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 80%;
+}
+
+/* --- Special Filter Button Style --- */
+.filter-btn {
+    border: 1px solid #00d2ff;
+    border-radius: 20px;
+    padding: 5px 20px !important;
+}
+
+.filter-btn:hover {
+    background: #00d2ff;
+    color: #000 !important;
+}
+/* --- style.css --- */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    /* Mesh Gradient: Dark Green to Black Shades */
+    background: linear-gradient(135deg, 
+        var(--white-shade) 0%, 
+        var(--django-dark) 50%, 
+        var(--white-shade) 100%);
+    background-size: 400% 400%;
+    animation: forestGradient 12s ease infinite;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+@keyframes forestGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.content {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-direction: column;
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: transparent; /* Forces background removal */
+    border: none;
+    box-shadow: none;
+    padding-bottom: 80px; /* Extra space for the fixed footer */
+    min-height: calc(100vh-140px);
+}
+
+
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+.content table th,
+.content table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.content table th {
+    background-color: #f2f2f2;
+}
+
+
+/* Table Row Hover - Matching the Green Theme */
+.content table tbody tr:hover {
+    background-color: rgba(68, 183, 139, 0.1); /* Very light green tint */
+    transform: scale(1.01);
+    transition: 0.2s;
+}
+/* style.css updates */
+
+/* --- Container & Table Styling --- */
+.glass-container {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(68, 183, 139, 0.2); /* Light green tint border */
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+}
+/* --- 2. Change color of Employee List title --- */
+.page-title {
+    color: var(--django-light); /* Sets title to Universal Light Green */
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(68, 183, 139, 0.3);
+    margin-bottom: 30px;
+}
+
+/* --- 3. Change color of Name and Age values --- */
+.emp-name {
+    color:var(--django-light); /* Keeping names crisp white */
+    font-weight: 600;
+}
+
+.style-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Space between rows for animation */
+}
+
+.style-table th {
+    color: var(--django-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px;
+    border-bottom: 2px solid var(--django-dark);
+}
+
+.table-row {
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Row Hover Animation */
+.table-row:hover {
+    transform: scale(1.02);
+    background: rgba(68, 183, 139, 0.1);
+    box-shadow: 0 0 15px rgba(68, 183, 139, 0.2);
+    cursor: pointer;
+}
+
+/* --- Green Theme Buttons --- */
+.btn {
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 12px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+/* UPDATE Button: Light Green Glow */
+.btn-update {
+    border: 1px solid var(--django-light);
+    color: var(--django-light);
+    margin-right: 5px;
+}
+
+.btn-update:hover {
+    background: var(--django-light);
+    color: var(--django-dark);
+    box-shadow: 0 0 20px var(--django-light);
+    transform: translateY(-3px);
+}
+
+/* DELETE Button: Dark Green Contrast */
+.btn-delete {
+    border: 1px solid #ff4b2b; /* Keep delete distinct or use Dark Green */
+    color: #ff4b2b;
+}
+
+.btn-delete:hover {
+    background: #ff4b2b;
+    color: white;
+    box-shadow: 0 0 20px #ff4b2b;
+    transform: translateY(-3px);
+}
+
+/* --- Post Badge --- */
+.post-badge {
+    background: var(--django-dark);
+    color: var(--django-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 2px solid var(--django-light);
+    font-size: 11px;
+}
+
+/* --- Train Animation Footer --- */
+.footer {
+    background-color: var(--django-dark); /* Same as navbar */
+    height: 60px;
+    width: 100%;
+    position: fixed; /* Fixed to relative to avoid overlapping content */
+    overflow: hidden; /* Clips the "train" as it exits the screen */
+    display: flex;
+    align-items: center;
+    /* border-top: 2px solid var(--django-light);
+    border-bottom: 2px solid var(--django-light); */
+
+    margin-top: 40px;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+}
+
+.train-track {
+    white-space: nowrap;
+    position: absolute;
+    display: flex;
+    width: max-content;
+    gap: 100px; /* Space between the repeating text blocks */
+    animation: continuousTrain 25s linear infinite; /* The continuous "Train" motion */
+}
+
+.train-track p {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    padding-right: 100px; /* Extra space at the end of each block for smooth looping */
+}
+
+/* Train Animation Logic */
+@keyframes continuousTrain {
+    0% { transform: translateX(0); } /* Starts from the far right */
+    100% { transform: translateX(-50%); } /* Ends at the far left */
+}
+
+/* Hover Effect: Slow down the train when you look at it */
+.footer:hover .train-track {
+    animation-play-state: continue; /* Keeps the animation running but allows for a pause */
+    color: var(--django-light);
+    text-shadow: 0 0 10px var(--django-light);
+    transition: all 0.3s ease;
+}
+
+
+/* --- Glass Effect for Forms --- */
+/* style.css additions */
+
+.form-container {
+    max-width: 500px; /* Keeps the form sleek and centered */
+    margin: 30px auto 100px auto; /* Centered with some breathing room */
+    text-align: left;
+    margin-top: -30px;
+    margin-bottom: 100px;
+    padding-bottom: 50px; /* Extra space at the bottom for the fixed footer */
+}
+
+/* Styling the labels and input fields inside {{ form.as_p }} */
+.styled-form p {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.styled-form label {
+    color: var(--django-light); /* Universal Light Green */
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.styled-form input, .styled-form select, .styled-form textarea {
+    background: rgba(255, 255, 255, 0.05); /* Glass effect */
+    border: 1px solid rgba(68, 183, 139, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Input Glow Effect on Focus */
+.styled-form input:focus {
+    outline: none;
+    border-color: var(--django-light);
+    background: rgba(68, 183, 139, 0.1);
+    box-shadow: 0 0 15px rgba(68, 183, 139, 0.4); /* Green light glow */
+}
+
+/* Matching Submit Button */
+.btn-submit {
+    width: 100%;
+    background-color: var(--django-dark); /* Dark Green */
+    border: 2px solid var(--django-light);
+    color: var(--django-light);
+    padding: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--django-light);
+    color: var(--django-dark);
+    box-shadow: 0 0 25px var(--django-light); /* Strong glow */
+    transform: translateY(-3px);
+}
