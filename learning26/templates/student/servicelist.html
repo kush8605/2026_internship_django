@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> service list </h1>
+<div class="services-grid">
+
+{% for service in services  %}
+    <div class="service-card">
+    <div class="card-image">
+      <img src="https://via.placeholder.com/400x300" alt="Service Image">
+    </div>
+    <div class="card-content">
+      <span class="service-category">{{service.categoryId.categoryName}}</span>
+      <h3 class="service-title">{{service.serviceName}}</h3>
+      <h3 class="delete-link"><a href="{% url 'delete_service' service.id %}" onclick="return confirm('Are you sure you want to delete this service:{{service.serviceName}}')">Delete</a></h3> 
+    </div>
+  </div>
+{% endfor %}
+{% endblock content %}

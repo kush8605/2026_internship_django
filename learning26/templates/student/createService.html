@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Create New Service</h1>
+<form method="POST" novalidate>
+    {% csrf_token %}
+    {% comment %} {{ form | crispy }} {% endcomment %}
+     {{form.serviceName | as_crispy_field}}
+     {{form.serviceDescription | as_crispy_field}}
+     {{form.servicePrice | as_crispy_field}}
+     {{form.categoryId | as_crispy_field}} 
+     
+    <button type="submit">Create Service</button>
+
+</form>
+{% endblock content %}

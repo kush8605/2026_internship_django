@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Service
+from .forms import ServiceForm
 
 def studentmarks(request):
     names = {"kush-86", "rahul-90", "ankit-78", "priya-92", "sneha-88"}
@@ -27,3 +29,24 @@ def studentsubjects(request):
     
     data = {"subjects": subjects}
     return render(request, "student/studentsubjects.html", data)
+
+def servicelist(request):
+    services = Service.objects.all()
+    return render(request, "student/servicelist.html", {"services": services})
+
+def createService(request):
+
+    if request.method == "POST":
+        form = ServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("service_list")
+    else:
+        form = ServiceForm()
+    return render(request, "student/createservice.html", {"form": form})
+
+def deleteservice(request,id):
+    print("id from url = ",id)
+    Service.objects.filter(id=id).delete()
+    return redirect("service_list") 
+    
